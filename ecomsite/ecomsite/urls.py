@@ -22,5 +22,10 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('<int:id>/',views.detail, name='detail'),
     path('checkout/', views.checkout, name='checkout'),
+    
+    path('login/', views.loginPage, name='login'),
+    path('register/', views.registerPage, name='register'),
+    path('logout/', views.logoutUser, name='logout'),
+    
     path('admin/', admin.site.urls),
 ]
