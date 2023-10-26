@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Order
+from .models import Product, Order, Cart, CartMapping
 
 admin.site.site_header = "E-Commerce Site"
 admin.site.site_title = "World Bucket"
@@ -19,3 +19,5 @@ class ProductAdmin(admin.ModelAdmin):
 
 admin.site.register(Product,ProductAdmin)
 admin.site.register(Order)
+admin.site.register(Cart)
+admin.site.register(CartMapping)

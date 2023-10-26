@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Product(models.Model):
     
@@ -22,3 +23,13 @@ class Order(models.Model):
     state = models.CharField(max_length=20)
     zip = models.CharField(max_length=6) 
     total = models.CharField(max_length=200)
+    
+    
+class Cart(models.Model):
+    product = models.CharField(max_length=1000)
+    quantity = models.CharField(max_length=25)
+    
+    
+class CartMapping(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Product, on_delete=models.CASCADE)
