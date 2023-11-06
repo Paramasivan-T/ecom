@@ -40,10 +40,12 @@ def admin_only(view_func):
          
         if group == 'customer':
             return redirect ('index')
+        
+        if group == 'seller':
+            return redirect('seller_view')
             
         if group == 'admin':
             return view_func(request, *args, **kwargs)
             
     return wrapper_func
-            
             

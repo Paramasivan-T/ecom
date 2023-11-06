@@ -11,7 +11,7 @@ from django.contrib.auth.models import Group
 
 
 @login_required(login_url= 'login')
-@allowed_users(allowed_roles=['customer'])
+@allowed_users(allowed_roles=['customer', 'seller'])
 def index(request):
     product_objects = Product.objects.all()
 
@@ -98,3 +98,15 @@ def logoutUser(request):
 def admin_view(request):
     context = {}
     return render(request, 'shop/admin.html', context)
+
+@login_required(login_url='login')
+# @seller_only
+def seller_view(request):
+    product_objects = Product.objects.all()
+    context = {'product_objects':product_objects}
+    return render(request, 'shop/seller_view.html', context)
+
+def add_product(request):
+    
+    context = {}
+    return render(request, 'shop/add_product.html', context)

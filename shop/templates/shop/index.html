@@ -17,11 +17,7 @@
     <link rel="icon" type="image/x-icon" href="https://cdn0.iconfinder.com/data/icons/most-usable-logos/120/Amazon-512.png">
 </head>
 <body>
-
-    ui
-
     <div class="container">
-    
         <div class="row">
             <div class="col-md-12">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -111,6 +107,9 @@
                         {% endif %}
 
                     </ul>
+                    {% if request.user.seller %}
+                        seller
+                    {% endif %}
             </div>
         </div>
 
