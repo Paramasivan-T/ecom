@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 def unauthenticated_user(view_func):
@@ -25,7 +25,9 @@ def allowed_users(allowed_roles = []):
             if group in allowed_roles:
                 return view_func(request, *args, **kwargs)
             else:
-                return HttpResponse('Unauthorize, login again')
+                # return HttpResponse('Unauthorize, login again')
+                # return render(request, 'unauthorized.html')
+                return redirect('unauthorized')
                 
         return wrapper_func
     return decorator

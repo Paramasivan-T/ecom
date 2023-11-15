@@ -21,9 +21,9 @@ def index(request):
         product_objects = product_objects.filter(title__icontains=item_name)
 
     #paginator Code
-    paginator = Paginator(product_objects, per_page=4)
-    page = request.GET.get('page')
-    product_objects = paginator.get_page(page)
+    # paginator = Paginator(product_objects, per_page=4)
+    # page = request.GET.get('page')
+    # product_objects = paginator.get_page(page)
 
     return render(request, 'shop/index.html', {'product_objects':product_objects})
 
@@ -104,9 +104,24 @@ def admin_view(request):
 def seller_view(request):
     product_objects = Product.objects.all()
     context = {'product_objects':product_objects}
-    return render(request, 'shop/seller_view.html', context)
+    return render(request, 'shop/seller/seller_view.html', context)
 
 def add_product(request):
-    
+
+    if request.method == "POST":
+        title = request.POST.get('title','')
+        price = request.POST.get('price', "")
+        discount_price = request.POST.get('discount_price', "")
+        category = request.POST.get('category', "")
+        description = request.POST.get('description', "")
+        image = request.POST.get('image', "")
+
+        product = Product(title=title, price=price, discount_price=discount_price, category=category, description=description, image=image)
+        product.save()
+
     context = {}
-    return render(request, 'shop/add_product.html', context)
+    return render(request, 'shop/seller/add_product.html', context)
+
+def unauthorized(request):
+    context = {}
+    return render (request, 'shop/unauthorized.html', context)

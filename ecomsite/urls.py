@@ -32,4 +32,5 @@ urlpatterns = [
     path('add_product/', views.add_product, name='add_product'),
     
     path('admin/', admin.site.urls),
+    path('unauthorized/', views.unauthorized, name='unauthorized'),
 ]

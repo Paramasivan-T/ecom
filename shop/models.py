@@ -12,6 +12,8 @@ class Product(models.Model):
     category = models.CharField(max_length=60)
     description = models.TextField()
     image = models.CharField(max_length=300)
+    # sell_by = models.ForeignKey(User,on_delete=models.CASCADE)
+
 
 class Order(models.Model):
     items = models.CharField(max_length=1000)
